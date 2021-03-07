@@ -1,0 +1,27 @@
+
+<button class="header-toolbar-custom-button" type="button">
+  <span class="header-toolbar-text okthetszaml">
+  
+  </span>
+</button>
+
+<script>
+var year = 2021;
+var month = 2;
+var day = 8;
+var semester_start_date = new Date(year, month - 1, day);
+
+function weeksBetween(d1, d2) {
+    return Math.ceil((d2 - d1) / (7 * 24 * 60 * 60 * 1000));
+}
+var weeks = weeksBetween(semester_start_date, new Date());
+
+
+window.onload = function() {
+    if (window.jQuery) {  
+        if (weeks < 15 && weeks > 0) { 
+          jQuery(".okthetszaml").text("Ez a " + weeks + ". oktatási hét!");
+        }
+    }
+}
+</script>
