@@ -1,0 +1,14 @@
+<script>
+window.onload = function() {
+    if (window.jQuery) {  
+			var rem = jQuery("span:contains('Tanácskozási jogú tag')");
+			var here = rem.parent();
+
+			var tohere = here.find(">span:nth-of-type(1)");
+			
+			tohere.before("<span class=\"post__subtitle\" style=\"display:block;\">Tanácskozási jogú tag</span>");
+			
+			rem.remove();
+    }
+}
+</script>
