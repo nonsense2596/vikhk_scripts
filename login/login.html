@@ -30,7 +30,7 @@
             width: 100%;
         }
         
-        img {
+        .hklogo {
             width: 95px;
             height: 139px;
         }
@@ -38,8 +38,6 @@
         .forgotpass {
             text-decoration: underline;
         }
-        
-        .form-bottom {}
         
         .form-bottom .form-bottom-left {
             float: left;
@@ -54,10 +52,27 @@
                 display: none;
             }
         }
+        
+        #bgimg {
+            overflow: hidden;
+        }
+        
+        .bg {
+            position: absolute;
+            opacity: 0.0;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: 2000px;
+            height: 2000px;
+            background-image: url("https://delta.ut.ee/wp-content/themes/delta/img/bg-1.svg");
+            background-repeat: repeat;
+        }
     </style>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark" id="parallax">
     <div class="container-fluid h-100">
         <div class="row h-100">
 
@@ -65,7 +80,7 @@
                 <!-- keret méret -->
                 <div class="row h-100">
                     <div class="img pb-5">
-                        <img src="hkf.png" alt="">
+                        <img class="hklogo" src="hkf.png" alt="">
                     </div>
                     <form class="col-lg-8 offset-lg-2 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
                         <!-- form méret -->
@@ -102,11 +117,35 @@
             </div>
 
             <div class="col-lg-8  bg-light" id="bgimg">
-                <!-- kép méret -->
+                <!-- <span class="bg">asd</span> -->
+                <div class="bg">
+
+                </div>
             </div>
         </div>
     </div>
+    <script src="jquery-1.7.2.js"></script>
+    <script src="jquery.parallax.min.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+            jQuery(document.body).one('mouseenter', function() {
+                setTimeout(function() {
+                    jQuery('.bg').animate({
+                        opacity: 0.3
+                    }, 500);
+                }, 500);
+            });
 
+            jQuery('.bg').parallax({
+                frameDuration: 40,
+                xparallax: '15px',
+                yparallax: '15px'
+            });
+
+
+
+        });
+    </script>
 </body>
 
 </html>
