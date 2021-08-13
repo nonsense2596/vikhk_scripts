@@ -26,9 +26,10 @@ function parseMessageData(messages) {
     if(matches5) rec.hasonlo = matches5[0];
     rec.hasonlo = rec.hasonlo.replace("HASONLOTERULET\: ",'');
 
-    var matches6 = text.match("MIERTEZAKEPZES\:(.|\n)*");
+    var matches6 = text.match("MIERTEZAKEPZES\:(.|\r\n)*OKTATOKSKALA\:");
     if(matches6) rec.miert = matches6[0];
     rec.miert = rec.miert.replace("MIERTEZAKEPZES\: ",'');
+    rec.miert = rec.miert.replace("OKTATOKSKALA\:",'');
 
     var matches7 = text.match("OKTATOKSKALA\:(.|\n)*");
     if(matches7) rec.oktatoskala = matches7[0];
@@ -42,13 +43,15 @@ function parseMessageData(messages) {
     if(matches9) rec.valskala = matches9[0];
     rec.valskala = rec.valskala.replace("TARGYAKVALASZTHATOSKALA\: ",'');
 
-    var matches10 = text.match("OKTATOK\:(.|\n)*");
+    var matches10 = text.match("OKTATOK\:(.|\r\n)*TARGYAK\:");
     if(matches10) rec.oktatok = matches10[0];
     rec.oktatok = rec.oktatok.replace("OKTATOK\: ",'');
+    rec.oktatok = rec.oktatok.replace("TARGYAK\:",'');
 
-    var matches11 = text.match("TARGYAK\:(.|\n)*");
+    var matches11 = text.match("TARGYAK\:(.|\r\n)*ELMELETGYAKORLAT\:");
     if(matches11) rec.targyak = matches11[0];
     rec.targyak = rec.targyak.replace("TARGYAK\: ",'');
+    rec.targyak = rec.targyak.replace("ELMELETGYAKORLAT\:",'');
 
     var matches12 = text.match("ELMELETGYAKORLAT\:(.|\n)*");
     if(matches12) rec.egy = matches12[0];
@@ -62,21 +65,25 @@ function parseMessageData(messages) {
     if(matches14) rec.targykiv = matches14[0];
     rec.targykiv = rec.targykiv.replace("TARGYKIV\: ",'');
 
-    var matches15 = text.match("TARGYAKKIVETEL\:(.|\n)*");
+    var matches15 = text.match("TARGYAKKIVETEL\:(.|\r\n)*HASZNOS\:");
     if(matches15) rec.targykivetel = matches15[0];
     rec.targykivetel = rec.targykivetel.replace("TARGYAKKIVETEL\: ",'');
+    rec.targykivetel = rec.targykivetel.replace("HASZNOS\:",'');
 
-    var matches16 = text.match("HASZNOS\:(.|\n)*");
+    var matches16 = text.match("HASZNOS\:(.|\r\n)*TARGYAKPLUSZ\:");
     if(matches16) rec.hasznos = matches16[0];
     rec.hasznos = rec.hasznos.replace("HASZNOS\: ",'');
+    rec.hasznos = rec.hasznos.replace("TARGYAKPLUSZ\:",'');
 
-    var matches17 = text.match("TARGYAKPLUSZ\:(.|\n)*");
+    var matches17 = text.match("TARGYAKPLUSZ\:(.|\r\n)*VALTOZTATAS2\:");
     if(matches17) rec.targyplusz = matches17[0];
     rec.targyplusz = rec.targyplusz.replace("TARGYAKPLUSZ\: ",'');
+    rec.targyplusz = rec.targyplusz.replace("VALTOZTATAS2\:",'');
 
-    var matches18 = text.match("VALTOZTATAS\:(.|\n)*");
-    if(matches18) rec.valtoztatas = matches18[0];
-    rec.valtoztatas = rec.valtoztatas.replace("VALTOZTATAS\: ",'');
+    var matches18 = text.match("VALTOZTATAS2\:(.|\r\n)*SPEC\:");
+    if(matches18) rec.valtoztatas2 = matches18[0];
+    rec.valtoztatas2 = rec.valtoztatas2.replace("VALTOZTATAS2\: ",'');
+    rec.valtoztatas2 = rec.valtoztatas2.replace("SPEC\:",'');
 
     var matches19 = text.match("SPEC\:(.|\n)*");
     if(matches19) rec.spec = matches19[0];
@@ -86,17 +93,19 @@ function parseMessageData(messages) {
     if(matches20) rec.specelskala = matches20[0];
     rec.specelskala = rec.specelskala.replace("SPECELEGEDETTSEGSKALA\: ",'');
 
-    var matches21 = text.match("SPECELEGEDETTSEG\:(.|\n)*");
+    var matches21 = text.match("SPECELEGEDETTSEG\:(.|\r\n)*SPECINFO\:");
     if(matches21) rec.specel = matches21[0];
     rec.specel = rec.specel.replace("SPECELEGEDETTSEG\: ",'');
+    rec.specel = rec.specel.replace("SPECINFO\:",'');
 
     var matches22 = text.match("SPECINFO\:(.|\n)*");
     if(matches22) rec.specinfo = matches22[0];
     rec.specinfo = rec.specinfo.replace("SPECINFO\: ",'');
 
-    var matches23 = text.match("SPECTAJEKOZOTTSAG\:(.|\n)*");
+    var matches23 = text.match("SPECTAJEKOZOTTSAG\:(.|\r\n)*CEG\:");
     if(matches23) rec.spectaj = matches23[0];
     rec.spectaj = rec.spectaj.replace("SPECTAJEKOZOTTSAG\: ",'');
+    rec.spectaj = rec.spectaj.replace("CEG\:",'');
 
     var matches24 = text.match("CEG\:(.|\n)*");
     if(matches24) rec.ceg = matches24[0];
@@ -106,9 +115,10 @@ function parseMessageData(messages) {
     if(matches25) rec.cegskala = matches25[0];
     rec.cegskala = rec.cegskala.replace("CEGSKALA\: ",'');
 
-    var matches26 = text.match("SZAKGYAK\:(.|\n)*");
+    var matches26 = text.match("SZAKGYAK\:(.|\r\n)*CEGFEJLODES\:");
     if(matches26) rec.szakgyak = matches26[0];
     rec.szakgyak = rec.szakgyak.replace("SZAKGYAK\: ",'');
+    rec.szakgyak = rec.szakgyak.replace("CEGFEJLODES\:",'');
 
     var matches27 = text.match("CEGFEJLODES\:(.|\n)*");
     if(matches27) rec.cegfejl = matches27[0];
@@ -138,9 +148,10 @@ function parseMessageData(messages) {
     if(matches33) rec.cegajanlas = matches33[0];
     rec.cegajanlas = rec.cegajanlas.replace("CEGAJANLAS\: ",'');
 
-    var matches34 = text.match("CEGAJANLASKINEK\:(.|\n)*");
+    var matches34 = text.match("CEGAJANLASKINEK\:(.|\r\n)*CEGSZAKDOGAIDO\:");
     if(matches34) rec.kinek = matches34[0];
     rec.kinek = rec.kinek.replace("CEGAJANLASKINEK\: ",'');
+    rec.kinek = rec.kinek.replace("CEGSZAKDOGAIDO\:",'');
 
     var matches35 = text.match("CEGSZAKDOGAIDO\:(.|\n)*");
     if(matches35) rec.szakdido = matches35[0];
@@ -150,7 +161,7 @@ function parseMessageData(messages) {
     if(matches36) rec.keresskala = matches36[0];
     rec.keresskala = rec.keresskala.replace("MUNKAKERESESSKALA\: ",'');
 
-    var matches37 = text.match("SZAKGYAKBARMI\:(.|\n)*");
+    var matches37 = text.match("SZAKGYAKBARMI\:(.|\r\n)*");
     if(matches37) rec.szgybarmi = matches37[0];
     rec.szgybarmi = rec.szgybarmi.replace("SZAKGYAKBARMI\: ",'');
 
@@ -160,7 +171,7 @@ function parseMessageData(messages) {
 }
 
 function getRelevantMessages() {
-  var filter = "subject:KKOFORM AND newer_than:1d AND -label:KKOFORM"
+  var filter = "subject:BPROFKERDOIV AND newer_than:1d AND -label:BPROFKERDOIV"
   var threads = GmailApp.search(filter,0,10);
   var messages=[];
   threads.forEach(function(thread){
@@ -178,7 +189,7 @@ function doGet(){
 
 function labelMessagesAsDone(messages)
 {
-  var label = 'BPROF';
+  var label = 'BPROFKERDOIV';
   var label_obj = GmailApp.getUserLabelByName(label);
   if(!label_obj)
     label_obj = GmailApp.createLabel(label);
@@ -191,7 +202,7 @@ function labelMessagesAsDone(messages)
 
 function saveDataToSheet(records)
 {
-  var spreadsheet = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1uQ7eho_Ge8u-RgW64IvCWwg4Doxty2IjYSlEOkI0WHg/edit#gid=0");
+  var spreadsheet = SpreadsheetApp.openByUrl("");
   var sheet = spreadsheet.getSheetByName("Sheet1");
   for(var r=0;r<records.length;r++)
   {
@@ -213,7 +224,7 @@ function saveDataToSheet(records)
       records[r].targykivetel,
       records[r].hasznos,
       records[r].targyplusz,
-      records[r].valtoztatas,
+      records[r].valtoztatas2,
       records[r].spec,
       records[r].specelskala,
       records[r].specel,
